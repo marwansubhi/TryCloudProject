@@ -1,5 +1,6 @@
 package com.trycloud.tests.base;
 
+import com.trycloud.utilities.ConfigurationReader;
 import com.trycloud.utilities.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -18,12 +19,7 @@ public class TestBase {
        driver = WebDriverFactory.getDriver("chrome");
        driver.manage().window().maximize();
        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-       Properties properties = new Properties();
-       String path = "configuration.properties";
-       FileInputStream file = new FileInputStream(path);
-       properties.load(file);
-       String url = properties.getProperty("url");
-       driver.get(url);
+       driver.get(ConfigurationReader.getProperty("url"));
     }
     @AfterMethod
     public void tearDown(){
