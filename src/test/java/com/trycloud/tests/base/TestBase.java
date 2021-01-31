@@ -1,5 +1,6 @@
 package com.trycloud.tests.base;
 
+import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.ConfigurationReader;
 import com.trycloud.utilities.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
@@ -23,6 +24,7 @@ public class TestBase {
     }
     @AfterMethod
     public void tearDown(){
+        BrowserUtils.sleep(5);
        driver.close();
        driver.quit();
     }
