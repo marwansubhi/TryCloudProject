@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
-public class TryCloudLoginPage {
+public class TestBase {
     WebDriver driver;
     @BeforeMethod
     public void setup() throws IOException {
