@@ -14,7 +14,7 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
-    WebDriver driver;
+  public   WebDriver driver;
     @BeforeMethod
     public void setup() throws IOException {
        driver = WebDriverFactory.getDriver("chrome");
