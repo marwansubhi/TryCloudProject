@@ -10,25 +10,30 @@ import org.testng.annotations.Test;
 public class LoginPage extends TestBase {
 
     // Page factory, object repository
+
     @FindBy(xpath = "//input[@id='user']")
     WebElement username;
-    @FindBy(xpath = "//input[@id='password']")
+    @FindBy(css = "input[id='password']")
     WebElement password;
-    @FindBy(xpath = "//input[@id='submit-form' and@type='submit']")
+    @FindBy(css = "input[id='submit-form']")
     WebElement loginButton;
+    @FindBy(xpath = "//a[@id='lost-password']")
+    WebElement forgotPasswordLink;
+    @FindBy(xpath = "//*[@id='body-login']/div[1]/div/main/div/div/a[2]")
+    WebElement logInWithADevice;
 
-    public LoginPage() {
-        PageFactory.initElements(driver, this);
+    public LoginPage(){
+        PageFactory.initElements(driver,this);
     }
 
-    public String pageTitle() {
+    public String getTitleOfLogInPage(){
         return driver.getTitle();
     }
-    public FilePage login(String username, String password){
+    public FilePage logIn(String username, String password){
         this.username.sendKeys(username);
         this.password.sendKeys(password);
         loginButton.click();
-        return  new FilePage();
+        return new FilePage();
     }
 
 
