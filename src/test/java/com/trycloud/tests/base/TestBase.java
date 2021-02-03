@@ -14,19 +14,21 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 public class TestBase {
-    WebDriver driver;
+    public static WebDriver driver;
+
     @BeforeMethod
     public void setup() throws IOException {
-       driver = WebDriverFactory.getDriver("chrome");
-       driver.manage().window().maximize();
-       driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-       driver.get(ConfigurationReader.getProperty("url"));
+        driver = WebDriverFactory.getDriver("chrome");
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        driver.get(ConfigurationReader.getProperty("url"));
     }
+
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         BrowserUtils.sleep(5);
-       driver.close();
-       driver.quit();
+        driver.close();
+        driver.quit();
     }
 
 }
