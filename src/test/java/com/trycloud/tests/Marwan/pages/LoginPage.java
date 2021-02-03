@@ -29,11 +29,19 @@ public class LoginPage extends TestBase {
     public String getTitleOfLogInPage(){
         return driver.getTitle();
     }
+
+
+
     public FilePage logIn(String username, String password){
         this.username.sendKeys(username);
         this.password.sendKeys(password);
         loginButton.click();
         return new FilePage();
+    }
+
+
+    public void clickPasswordLink(){
+        forgotPasswordLink.click();
     }
 
 

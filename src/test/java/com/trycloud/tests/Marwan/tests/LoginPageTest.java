@@ -16,6 +16,8 @@ public class LoginPageTest extends TestBase {
     public void loginAsAUser(){
         loginPage = new LoginPage();
         loginPage.logIn(ConfigurationReader.getProperty("username"),ConfigurationReader.getProperty("password"));
+        loginPage.clickPasswordLink();
+        loginPage.getTitleOfLogInPage();
     }
 
 }
