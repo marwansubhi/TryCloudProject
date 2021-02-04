@@ -34,7 +34,7 @@ public class ContactsModule {
 
         //BrowserUtils.sleep(2);
 
-        Driver.closeDriver();
+       // Driver.closeDriver();
 
     }
 }
