@@ -1,5 +1,6 @@
 package com.trycloud.tests.Marwan.tests;
 
+import com.trycloud.tests.Marwan.pages.DashboardPage;
 import com.trycloud.tests.Marwan.pages.FavoritePage;
 import com.trycloud.tests.Marwan.pages.FilePage;
 import com.trycloud.tests.Marwan.pages.LoginPage;
@@ -8,6 +9,9 @@ import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.ConfigurationReader;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -17,14 +21,20 @@ import java.util.List;
 public class FilePageTest extends TestBase {
     LoginPage loginPage;
     FilePage filePage;
+    DashboardPage dashboard;
+    FavoritePage favoritePage;
+    WebDriverWait wait;
 
     @Test(priority = 1)
     public void verify_page_title() {
         loginPage = new LoginPage();
+        dashboard = new DashboardPage();
         filePage = new FilePage();
+
         loginPage.logIn(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
         BrowserUtils.sleep(5);
-        String expectedPageTitle = "Files - Trycloud - QA";
+        dashboard.clickFiles();
+        String expectedPageTitle = "Files - Trycloud QA";
         String actualPageTitle = filePage.getTitleOfLogInPage();
         Assert.assertEquals(expectedPageTitle, actualPageTitle);
     }
@@ -32,8 +42,14 @@ public class FilePageTest extends TestBase {
     @Test(priority = 2)
     public void user_can_select_all_uploaded_files() {
         loginPage = new LoginPage();
-        loginPage.logIn(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
+        dashboard = new DashboardPage();
         filePage = new FilePage();
+
+
+        loginPage.logIn(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
+
+
+        dashboard.clickFiles();
         BrowserUtils.sleep(5);
         filePage.selectAllFiles();
         Assert.assertTrue(filePage.areAllFilesSelected());
@@ -43,13 +59,45 @@ public class FilePageTest extends TestBase {
     @Test(priority = 3)
     public void user_can_add_file_toFavorite() {
         loginPage = new LoginPage();
-        loginPage.logIn(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
+        dashboard = new DashboardPage();
         filePage = new FilePage();
+
+
+        loginPage.logIn(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
+        dashboard.clickFiles();
+
         BrowserUtils.sleep(3);
         filePage.selectActions();
         filePage.clickFavoriteBar();
         BrowserUtils.sleep(3);
         filePage.clickFavoriteTab();
+
+    }
+
+    @Test(priority = 4)
+    public void user_can_remove_file_from_favorite() {
+        loginPage = new LoginPage();
+        dashboard = new DashboardPage();
+        filePage = new FilePage();
+
+        favoritePage = new FavoritePage();
+
+        loginPage.logIn(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
+        dashboard.clickFiles();
+
+        BrowserUtils.sleep(3);
+
+        filePage.clickFavoriteTab();
+
+      //  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//span[.='csharp'])[3]")));
+
+        BrowserUtils.sleep(3);
+
+        favoritePage.clickAction();
+        BrowserUtils.sleep(3);
+        favoritePage.removeFile();
+
+        //Assert.assertFalse(favoritePage.getMyFile().i);
 
     }
 

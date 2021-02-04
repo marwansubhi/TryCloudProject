@@ -13,13 +13,29 @@ public class FilePage extends TestBase {
     WebElement selectAllCheckbox;
     @FindBy(how = How.XPATH, xpath = "//input[contains(@id,'select-files')]")
     List<WebElement> allFilesCheckBoxes;
-    @FindBy(xpath = "(//span[@class='fileactions'])[2]/a[2]/span")
+    @FindBy(xpath = " //*[@id='fileList']/tr[3]/td[2]/a/span[2]/a[2]/span[1]")
     WebElement actionBar;
 
-    @FindBy(xpath = "//*[@data-id='6274' and@data-type='dir']/td[2]/div/ul/li[3]")
-    WebElement favorite;
+    @FindBy(xpath = "//*[@id='fileList']/tr[3]/td[2]/div/ul/li[3]/a/span[2]")
+    WebElement addToFavorite;
     @FindBy(xpath = "//a[text()='Favorites']")
     WebElement favoritesTab;
+
+    @FindBy(how = How.XPATH, using = "(//a[@aria-label='Files'])[1]")
+    WebElement fileModuleButton;
+
+/*
+    //*[@id="fileList"]/tr[2]/td[2]/a/span[1]/span[1]
+    //*[@id="fileList"]/tr[2]/td[2]/a/span[2]/a[2]/span[1]
+    //*[@id="fileList"]/tr[1]/td[2]/a/span[3]/a[2]/span[1]
+    //*[@id="fileList"]/tr[2]/td[2]/a/span[2]/a[2]/span[1]
+    //*[@id="fileList"]/tr[3]/td[2]/a/span[2]/a[2]/span[1]
+    //*[@id="fileList"]/tr[2]/td[2]/div/ul/li[3]/a/span[2]
+
+    //*[@id='fileList']/tr[3]/td[2]/a/span[2]/a[2]/span[1]
+ */
+
+
 
 
     public FilePage() {
@@ -43,17 +59,19 @@ public class FilePage extends TestBase {
         return flag;
     }
 
-    public void selectActions(){
+    public void selectActions() {
         actionBar.click();
     }
 
-    public FavoritePage clickFavoriteBar(){
-        favorite.click();
+    public FavoritePage clickFavoriteBar() {
+        addToFavorite.click();
         return new FavoritePage();
     }
-    public void clickFavoriteTab(){
+
+    public void clickFavoriteTab() {
         favoritesTab.click();
     }
+
 
 
 }
