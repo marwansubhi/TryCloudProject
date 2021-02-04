@@ -8,13 +8,15 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
+
+
 public class ContactsModule {
 
     @Test
     public void contact() {
         Driver.getDriver().get(ConfigurationReader.getProperty("tryCloudUrl"));
         BrowserUtils.sleep(3);
-        Driver.getDriver().get(ConfigurationReader.getProperty("tryCloudUrl"));
+       Driver.getDriver().get(ConfigurationReader.getProperty("tryCloudUrl"));
         BrowserUtils.sleep(3);
         WebElement userNameInput = Driver.getDriver().findElement(By.xpath("//p[@class='grouptop']//input"));
         String username =  ConfigurationReader.getProperty("username");

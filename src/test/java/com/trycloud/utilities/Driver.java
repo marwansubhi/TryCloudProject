@@ -13,7 +13,7 @@ public class Driver {
 
     }
 
-    private static WebDriver driver;// we use static because we want to call it
+    public static WebDriver driver;// we use static because we want to call it
 
     public static WebDriver getDriver() {
         if (driver == null) {
@@ -49,5 +49,4 @@ public class Driver {
 
 
     }
-
 }
