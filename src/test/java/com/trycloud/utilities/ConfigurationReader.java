@@ -6,10 +6,6 @@ import java.util.Properties;
 
 public class ConfigurationReader {
 
-    //In this class we will implement the repeated steps of reading
-    // from configuration.properties file
-
-    //#1- Create the object of Properties
     private static Properties properties = new Properties();
 
     static {
@@ -32,5 +28,6 @@ public class ConfigurationReader {
     public static String getProperty(String keyWord){
         return properties.getProperty(keyWord);
     }
+
 
 }
