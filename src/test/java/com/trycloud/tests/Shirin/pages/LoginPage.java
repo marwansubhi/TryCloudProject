@@ -19,4 +19,7 @@ public class LoginPage {
     public WebElement getLoginButton(){
         return driver.findElement(By.xpath("//*[@id='submit-form']"));
     }
+    public WebElement getTalkButton(){return driver.findElement(By.xpath("//ul[@id='appmenu']/li[@data-id='spreed']/a"));}
 }
+
+
