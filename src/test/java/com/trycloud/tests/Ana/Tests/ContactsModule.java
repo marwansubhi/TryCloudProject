@@ -1,6 +1,7 @@
 package com.trycloud.tests.Ana.Tests;
 
 import com.github.javafaker.Faker;
+import com.github.javafaker.PhoneNumber;
 import com.trycloud.tests.Ana.Pages.LoginPage;
 import com.trycloud.utilities.BrowserUtils;
 import com.trycloud.utilities.Driver;
@@ -13,63 +14,58 @@ public class ContactsModule extends LoginPage {
     @Test
     public void testCase_1() {
         //1. login as a user (created login page class)
-        BrowserUtils.sleep(2);
+        BrowserUtils.sleep(3);
         //2. click "Contacts" module
-        WebElement contactsModule = Driver.getDriver().findElement(By.xpath("/html/body/header/div[1]/ul/li[6]/a"));
-        contactsModule.click();
+         Driver.getDriver().findElement(By.xpath("//a[@aria-label='Contacts']")).click();
+
 
         //3. Verify the page tile is Contents module’s tile
         String expectedTitle = "Contacts";
         String actualPageTitle = Driver.getDriver().getTitle();
         Assert.assertTrue(actualPageTitle.contains(expectedTitle));
+
+        //closing browser
+        Driver.closeDriver();
     }
 
 
     @Test
     public void testCase_2() {
         //test case nr.2  - verify user can add contacts
-
-        //login as a user
+        Faker faker = new Faker();
         BrowserUtils.sleep(2);
 
         //2. click "Contacts" module
-        WebElement contactsModule = Driver.getDriver().findElement(By.xpath("/html/body/header/div[1]/ul/li[6]/a"));
-        contactsModule.click();
+         Driver.getDriver().findElement(By.xpath("//a[@aria-label='Contacts']")).click();
 
         //3. Click “New Contact” button
-        WebElement newContactButton = Driver.getDriver().findElement(By.id("new-contact-button"));
-        newContactButton.click();
+        Driver.getDriver().findElement(By.xpath("//button[@id='new-contact-button']")).click();
         BrowserUtils.sleep(3);
-
 
         //4. Fill out the contact info like : Title, Phone, email, address , etc
-        Faker faker = new Faker();
 
-        BrowserUtils.sleep(3);
         //enter phone number
-        WebElement PhoneNumber =Driver.getDriver().findElement(By.xpath("//input[@inputmode='tel']"));
-        String phoneNumberFaker =faker.phoneNumber().phoneNumber();
-        PhoneNumber.sendKeys(phoneNumberFaker);
+        Driver.getDriver().findElement(By.xpath("//input[@inputmode='tel']")).sendKeys(faker.phoneNumber().cellPhone());
+        BrowserUtils.sleep(3);
 
         //enter e-mail address
-        WebElement Email=Driver.getDriver().findElement(By.xpath("//input[@inputmode='email']"));
-        String emailFaker=faker.internet().emailAddress();
-        Email.sendKeys(emailFaker);
+        Driver.getDriver().findElement(By.xpath("//input[@inputmode='email']")).sendKeys(faker.internet().emailAddress());
+        BrowserUtils.sleep(3);
 
         //Enter address
-        WebElement address=Driver.getDriver().findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/div[3]/div/div[3]/input"));
-        String addressFaker=faker.address().streetAddress();
-        address.sendKeys(addressFaker);
+        Driver.getDriver().findElement(By.xpath("//*[@id=app-content-wrapper]/div[2]/section/div[3]/div/div[3]/input")).sendKeys(faker.address().streetAddress());
+        BrowserUtils.sleep(3);
 
         // Enter City
-        WebElement city= Driver.getDriver().findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/div[3]/div/div[6]/input"));
-        String cityFaker=faker.address().city();
-        city.sendKeys(cityFaker);
+        Driver.getDriver().findElement(By.xpath("//*[@id=app-content-wrapper]/div[2]/section/div[3]/div/div[6]/input")).sendKeys(faker.address().city());
 
         //Enter State
-        WebElement State = Driver.getDriver().findElement(By.xpath("//*[@id=\"app-content-wrapper\"]/div[2]/section/div[3]/div/div[7]/input"));
-        String stateFaker=faker.address().state();
-        State.sendKeys(stateFaker);
+        Driver.getDriver().findElement(By.xpath("//*[@id=app-content-wrapper]/div[2]/section/div[3]/div/div[7]/input")).sendKeys(faker.address().state());
+        BrowserUtils.sleep(3);
+
+        //Enter Country
+        Driver.getDriver().findElement(By.xpath("//*[@id=app-content-wrapper]/div[2]/section/div[3]/div/div[8]/input")).sendKeys(faker.address().country());
+
 
         //  5.Verify the contact name is added to the contact list
 
@@ -90,13 +86,11 @@ public class ContactsModule extends LoginPage {
 
         BrowserUtils.sleep(2);
         // click "Contacts" module
-        WebElement contactsModule = Driver.getDriver().findElement(By.xpath("(//a[@aria-label='Contacts'])[1]"));
-        contactsModule.click();
+        Driver.getDriver().findElement(By.xpath("(//a[@aria-label='Contacts'])")).click();
         BrowserUtils.sleep(3);
 
         //3. Verify the contact names are in the list
-        WebElement company = Driver.getDriver().findElement(By.xpath("//input[@id='contact-org']"));
-        company.sendKeys("Test1");
+        Driver.getDriver().findElement(By.xpath("//input[@id='contact-org']")).sendKeys("Test1");
         BrowserUtils.sleep(3);
 
         Assert.assertTrue(Driver.getDriver().getPageSource().contains("Test1"));

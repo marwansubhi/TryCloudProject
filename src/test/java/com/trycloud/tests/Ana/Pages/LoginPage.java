@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-public class LoginPage {
+public class LoginPage extends TestBase{
     @Test
     public void login() {
         Driver.getDriver().get(("http://qa2.trycloud.net"));
@@ -29,7 +29,7 @@ public class LoginPage {
 
         String actualTitle = Driver.getDriver().getTitle();
 
-        Assert.assertTrue(actualTitle.contains("Trycloud"));
+        Assert.assertTrue(actualTitle.contains("Trycloud"),"File not found FAILED!");
 
     }
 }
