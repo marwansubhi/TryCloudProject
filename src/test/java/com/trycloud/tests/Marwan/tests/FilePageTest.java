@@ -126,6 +126,8 @@ public class FilePageTest extends TestBase {
         driver.findElement(By.xpath("//*[@for='select_all_files']")).click();// this is to check if at least one file is selected
 
          */
+
+        // Hello bro
     }
 }
 
