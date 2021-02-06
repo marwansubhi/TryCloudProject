@@ -3,16 +3,21 @@ package com.trycloud.utilities;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.edge.EdgeDriver;
+
+import org.openqa.selenium.firefox.FirefoxDriver;
+
 
 import java.util.concurrent.TimeUnit;
 
 public class Driver {
 
     private Driver() {
+
+
     }
 
-    private static WebDriver driver;
+    public static WebDriver driver;// we use static because we want to call it
+
 
     public static WebDriver getDriver() {
         if (driver == null) {
@@ -21,15 +26,14 @@ public class Driver {
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
-                    driver.manage().window().maximize();
-                    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
                     break;
-                case "edge":
-                    WebDriverManager.edgedriver().setup();
-                    driver = new EdgeDriver();
-                    driver.manage().window().maximize();
-                    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+                case "firefox":
+                    WebDriverManager.firefoxdriver().setup();
+                    driver = new FirefoxDriver();
                     break;
+
                 default:
                     WebDriverManager.chromedriver().setup();
                     driver = new ChromeDriver();
@@ -38,6 +42,8 @@ public class Driver {
                     break;
             }
         }
+
+        //This same driver will be returned every time we call Driver.getDriver() method
         return driver;
 
     }
@@ -47,6 +53,9 @@ public class Driver {
             driver.quit();
             driver = null;
         }
-    }
 
+
+
+    }
 }
+
