@@ -20,12 +20,12 @@ public abstract class TestBase {
         driver.get(ConfigurationReader.getProperty("url"));
     }
 
-    @AfterMethod
-    public void tearDown() {
-        BrowserUtils.sleep(5);
-        driver.close();
-        driver.quit();
-    }
+//    @AfterMethod
+//    public void tearDown() {
+//        BrowserUtils.sleep(5);
+//        driver.close();
+//        driver.quit();
+//    }
 
 
 }
