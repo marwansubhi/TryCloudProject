@@ -26,8 +26,8 @@ public class TestBase {
 
     @AfterMethod
     public void tearDown() {
-        BrowserUtils.sleep(5);
-//        driver.close();
+      //  BrowserUtils.sleep(5);
+       // driver.close();
 //        driver.quit();
     }
 
