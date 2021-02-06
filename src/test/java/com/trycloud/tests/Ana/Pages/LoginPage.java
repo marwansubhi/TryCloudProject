@@ -10,7 +10,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
-public class LoginPage extends TestBase{
+public class LoginPage {
     @Test
     public void login() {
         Driver.getDriver().get(("http://qa2.trycloud.net"));

@@ -18,14 +18,13 @@ public class ContactsModule extends LoginPage {
         //2. click "Contacts" module
          Driver.getDriver().findElement(By.xpath("//a[@aria-label='Contacts']")).click();
 
-
         //3. Verify the page tile is Contents module’s tile
-        String expectedTitle = "Contacts";
         String actualPageTitle = Driver.getDriver().getTitle();
+        String expectedTitle = "Contacts";
         Assert.assertTrue(actualPageTitle.contains(expectedTitle));
 
         //closing browser
-        Driver.closeDriver();
+        //Driver.closeDriver();
     }
 
 
@@ -40,6 +39,10 @@ public class ContactsModule extends LoginPage {
 
         //3. Click “New Contact” button
         Driver.getDriver().findElement(By.xpath("//button[@id='new-contact-button']")).click();
+        String name  = "Muhtar";
+
+         // locating name
+        Driver.getDriver().findElement(By.xpath("//input[@id='contact-fullname']")).sendKeys("Muhtar");
         BrowserUtils.sleep(3);
 
         //4. Fill out the contact info like : Title, Phone, email, address , etc
