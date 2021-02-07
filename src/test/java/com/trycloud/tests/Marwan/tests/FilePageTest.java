@@ -79,7 +79,6 @@ public class FilePageTest extends TestBase {
         loginPage = new LoginPage();
         dashboard = new DashboardPage();
         filePage = new FilePage();
-
         favoritePage = new FavoritePage();
 
         loginPage.logIn(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
@@ -89,19 +88,19 @@ public class FilePageTest extends TestBase {
 
         filePage.clickFavoriteTab();
 
-      //  wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("(//span[.='csharp'])[3]")));
-
         BrowserUtils.sleep(3);
 
         favoritePage.clickAction();
         BrowserUtils.sleep(3);
+
         favoritePage.removeFile();
+        driver.navigate().refresh();
 
-        //Assert.assertFalse(favoritePage.getMyFile().i);
 
+        Assert.assertFalse(favoritePage.allFavoriteFolderTexts().contains("Java Package"));
     }
 
-
+/*
     @Test
     public void myTest() {
         loginPage = new LoginPage();
@@ -119,15 +118,9 @@ public class FilePageTest extends TestBase {
         filePage.clickFavoriteTab();
         FavoritePage favoritePage = new FavoritePage();
         System.out.println(favoritePage.isLocated());
-
-
-        /*
-        System.out.println(driver.findElement(By.xpath("//*[@id='select-files-6274']/following-sibling::label")).isSelected());
-        driver.findElement(By.xpath("//*[@for='select_all_files']")).click();// this is to check if at least one file is selected
-
-         */
-
-        // Hello bro
     }
+
+ */
+
 }
 

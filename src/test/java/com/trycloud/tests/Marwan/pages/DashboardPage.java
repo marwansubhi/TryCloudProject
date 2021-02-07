@@ -13,6 +13,8 @@ import org.testng.annotations.Test;
 import java.util.List;
 
 public class DashboardPage extends TestBase {
+   // WebElement sectionElement;
+
     @FindBy(how = How.XPATH,using = "(//a[@aria-label='Dashboard'])[1]")
     WebElement dashboardButton;
     @FindBy(xpath = "(//a[@aria-label='Files'])[1]")
@@ -20,6 +22,11 @@ public class DashboardPage extends TestBase {
 
     @FindBy(xpath = "//*[@id='fileList']/tr[2]/td[2]/div/ul/li[3]/a/span[2]")
     WebElement favorite;
+
+    @FindBy(xpath = "(//*[@href='/index.php/apps/calendar/'])[1]")
+    WebElement calenderPage;
+
+  // public By calenderPage2 = By.xpath("(//*[@href='/index.php/apps/calendar/'])[1]");
 
     public DashboardPage(){
         PageFactory.initElements(driver,this);
@@ -44,4 +51,12 @@ public class DashboardPage extends TestBase {
 
         favorite.click();
     }
+
+
+    /*
+    public WebElement calenderPage2(By findElementBy){
+       return calenderPage2.findElement(findElementBy).click();
+    }
+
+     */
 }

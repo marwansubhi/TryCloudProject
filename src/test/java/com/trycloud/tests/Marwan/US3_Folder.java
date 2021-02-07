@@ -16,7 +16,6 @@ public class US3_Folder extends TestBase {
         WebElement userNameBox = driver.findElement(By.xpath("//*[@id='user']"));
         WebElement passwordBox = driver.findElement(By.xpath("//*[@id='password']"));
         WebElement loginButton = driver.findElement(By.xpath("//*[@id='submit-form']"));
-
         userNameBox.sendKeys("User11");
         BrowserUtils.sleep(2);
         passwordBox.sendKeys("Userpass123");
@@ -32,7 +31,7 @@ public class US3_Folder extends TestBase {
         newFolder.click();
         BrowserUtils.sleep(2);
         WebElement fileName = driver.findElement(By.xpath("//*[@id='view13-input-folder']"));
-        fileName.sendKeys("Test Folder 9");
+        fileName.sendKeys("Java Package");
         BrowserUtils.sleep(2);
         WebElement submitButton = driver.findElement(By.xpath("(//*[@type='submit'])[2]"));
         submitButton.click();

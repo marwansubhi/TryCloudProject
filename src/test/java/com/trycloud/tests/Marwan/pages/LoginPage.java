@@ -22,11 +22,14 @@ public class LoginPage extends TestBase {
     @FindBy(xpath = "//*[@id='body-login']/div[1]/div/main/div/div/a[2]")
     WebElement logInWithADevice;
 
+
+
     public LoginPage(){
         PageFactory.initElements(driver,this);
     }
 
     public String getTitleOfLogInPage(){
+
         return driver.getTitle();
     }
 

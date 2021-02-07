@@ -13,16 +13,19 @@ public class FilePage extends TestBase {
     WebElement selectAllCheckbox;
     @FindBy(how = How.XPATH, xpath = "//input[contains(@id,'select-files')]")
     List<WebElement> allFilesCheckBoxes;
-    @FindBy(xpath = " //*[@id='fileList']/tr[3]/td[2]/a/span[2]/a[2]/span[1]")
+    @FindBy(xpath = " //*[@id='fileList']/tr[1]/td[2]/a/span[3]/a[2]")
     WebElement actionBar;
 
-    @FindBy(xpath = "//*[@id='fileList']/tr[3]/td[2]/div/ul/li[3]/a/span[2]")
+    @FindBy(xpath = "//*[@id='fileList']/tr[1]/td[2]/div/ul/li[3]/a/span[2]")
     WebElement addToFavorite;
     @FindBy(xpath = "//a[text()='Favorites']")
     WebElement favoritesTab;
 
     @FindBy(how = How.XPATH, using = "(//a[@aria-label='Files'])[1]")
     WebElement fileModuleButton;
+
+
+
 
 /*
     //*[@id="fileList"]/tr[2]/td[2]/a/span[1]/span[1]
