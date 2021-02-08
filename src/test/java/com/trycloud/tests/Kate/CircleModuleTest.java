@@ -11,6 +11,7 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -29,10 +30,7 @@ public class CircleModuleTest {
         Driver.getDriver().manage().window().maximize();
         Driver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
         Driver.getDriver().get(ConfigurationReader.getProperty("url"));
-        for (int i = 1; i <= 4; ) {//doesn't work properly
-            Driver.getDriver().findElement(By.id("user")).sendKeys(ConfigurationReader.getProperty("username" + i++));
-            break;
-        }
+        Driver.getDriver().findElement(By.id("user")).sendKeys(ConfigurationReader.getProperty("username1"));
         BrowserUtils.sleep(1);
         Driver.getDriver().findElement(By.id("password")).sendKeys(ConfigurationReader.getProperty("password"));
         BrowserUtils.sleep(1);
@@ -46,8 +44,9 @@ public class CircleModuleTest {
         WebElement circleModule = Driver.getDriver().findElement(By.xpath("(//a[@aria-label='Circles'])[1]"));
         //check if the "Circle" text appears by hover overing
         actions.moveToElement(circleModule).perform();
-        WebElement moduleName = Driver.getDriver().findElement(By.xpath("//span[.='Circles']"));
-        Assert.assertTrue(moduleName.isDisplayed()); //FAILED! Why Circles is not displayed? I located it as a text
+        String moduleName = Driver.getDriver().findElement(By.xpath("(//*[contains(text(),'Circles')])[1]")).getText();
+        String expectedModuleName = "Circle";
+        Assert.assertTrue(moduleName.contains(expectedModuleName)); //FAILED! Why Circles is not displayed? I located it as a text
     }
 
     @Test
@@ -108,8 +107,13 @@ public class CircleModuleTest {
         //JavascriptExecutor scrollDown = (JavascriptExecutor) Driver.getDriver();
 
 
-
         //div[.='All circles']
     }
 
+//    @AfterMethod
+//    public void tearDown() {
+//        BrowserUtils.sleep(5);
+//
+//        Driver.getDriver().quit();
+//    }
 }
