@@ -1,6 +1,7 @@
 package com.trycloud.tests.Marwan.pages;
 
 import com.trycloud.tests.base.TestBase;
+import com.trycloud.utilities.BrowserUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.*;
@@ -23,9 +24,14 @@ public class FilePage extends TestBase {
 
     @FindBy(how = How.XPATH, using = "(//a[@aria-label='Files'])[1]")
     WebElement fileModuleButton;
-
-
-
+    @FindBy(xpath = "//*[@class='button new']")
+    WebElement plusSign;
+    @FindBy(xpath = "//span[.='New folder']")
+    WebElement newFolderTab;
+    @FindBy(xpath = "//*[@id='view13-input-folder']")
+    WebElement fileNameBox;
+    @FindBy(xpath = "(//*[@type='submit'])[2]")
+    WebElement submitAnewFileNameButton;
 
 /*
     //*[@id="fileList"]/tr[2]/td[2]/a/span[1]/span[1]
@@ -37,8 +43,6 @@ public class FilePage extends TestBase {
 
     //*[@id='fileList']/tr[3]/td[2]/a/span[2]/a[2]/span[1]
  */
-
-
 
 
     public FilePage() {
@@ -75,6 +79,13 @@ public class FilePage extends TestBase {
         favoritesTab.click();
     }
 
+    public void createNewFolder(String folderName){
+        plusSign.click();
+        BrowserUtils.sleep(2);
+        newFolderTab.click();
+        fileNameBox.sendKeys(folderName);
+        submitAnewFileNameButton.click();
+    }
 
 
 }

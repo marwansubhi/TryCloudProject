@@ -100,6 +100,19 @@ public class FilePageTest extends TestBase {
         Assert.assertFalse(favoritePage.allFavoriteFolderTexts().contains("Java Package"));
     }
 
+    @Test
+    public void user_can_upload_file_directly_toTheHomepage(){
+        loginPage = new LoginPage();
+        filePage = new FilePage();
+        dashboard = new DashboardPage();
+        loginPage.logIn(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
+
+        dashboard.clickFiles();
+        BrowserUtils.sleep(2);
+        filePage.createNewFolder("Python Essentials");
+
+    }
+
 /*
     @Test
     public void myTest() {
