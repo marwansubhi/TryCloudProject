@@ -12,12 +12,9 @@ import java.util.concurrent.TimeUnit;
 public class Driver {
 
     private Driver() {
-
-
     }
 
     public static WebDriver driver;// we use static because we want to call it
-
 
     public static WebDriver getDriver() {
         if (driver == null) {
@@ -53,7 +50,6 @@ public class Driver {
             driver.quit();
             driver = null;
         }
-
 
 
     }
