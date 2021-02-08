@@ -32,6 +32,8 @@ public class FilePage extends TestBase {
     WebElement fileNameBox;
     @FindBy(xpath = "(//*[@type='submit'])[2]")
     WebElement submitAnewFileNameButton;
+    @FindBy(how = How.XPATH, using = "//*[@id='fileList']/tr/td[2]/a/span/span")
+    List<WebElement> allFilesCreated;
 
 /*
     //*[@id="fileList"]/tr[2]/td[2]/a/span[1]/span[1]
@@ -79,12 +81,23 @@ public class FilePage extends TestBase {
         favoritesTab.click();
     }
 
-    public void createNewFolder(String folderName){
+    public void createNewFolder(String folderName) {
         plusSign.click();
         BrowserUtils.sleep(2);
         newFolderTab.click();
         fileNameBox.sendKeys(folderName);
         submitAnewFileNameButton.click();
+    }
+
+    public boolean isNewFileDisplayed(String expectedFileName){
+        boolean flag = false;
+        for (WebElement each : allFilesCreated){
+            if (each.getText().equals(expectedFileName)){
+                flag = true;
+                break;
+            }
+        }
+        return flag;
     }
 
 

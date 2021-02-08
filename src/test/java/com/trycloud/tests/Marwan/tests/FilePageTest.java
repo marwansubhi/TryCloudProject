@@ -109,7 +109,12 @@ public class FilePageTest extends TestBase {
 
         dashboard.clickFiles();
         BrowserUtils.sleep(2);
-        filePage.createNewFolder("Python Essentials");
+        filePage.createNewFolder("Java Script");
+        driver.navigate().refresh();
+        BrowserUtils.sleep(3);
+        String expectedFileName = "Java Script";
+
+        Assert.assertTrue(filePage.isNewFileDisplayed(expectedFileName));
 
     }
 
