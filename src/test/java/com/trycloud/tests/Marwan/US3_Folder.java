@@ -2,7 +2,6 @@ package com.trycloud.tests.Marwan;
 
 import com.trycloud.tests.base.TestBase;
 import com.trycloud.utilities.BrowserUtils;
-import com.trycloud.utilities.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
