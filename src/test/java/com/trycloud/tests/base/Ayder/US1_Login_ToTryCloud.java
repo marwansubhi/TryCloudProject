@@ -25,11 +25,14 @@ public class US1_Login_ToTryCloud extends TestBase {
         loginButton.click();
         BrowserUtils.sleep(8);
 
+
+
+    }
+
+    public void tearDown() {
         driver.close();
         driver.quit();
 
     }
 
-    public void tearDown() {
-    }
 }
