@@ -22,7 +22,7 @@ public class US_7_User_Search_Items {
     public void setUp() {
         Driver.getDriver().get(ConfigurationReader.getProperty("urlQA2"));
         Driver.getDriver().manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        Driver.getDriver().findElement(By.xpath(loginBox)).sendKeys(ConfigurationReader.getProperty("username"));
+        Driver.getDriver().findElement(By.xpath(loginBox)).sendKeys(ConfigurationReader.getProperty("username1"));
         Driver.getDriver().findElement(By.xpath(passwordBox)).sendKeys(ConfigurationReader.getProperty("password"));
         Driver.getDriver().findElement(By.xpath(loginButton)).click();
     }
