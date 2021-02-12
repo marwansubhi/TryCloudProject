@@ -15,8 +15,9 @@ public class HomeTestPage extends TestBase {
         HomePage homePage = new HomePage(driver);
         homePage.contactModuleButton().click();
 
-        String expectedPageTitle = "Contacts";
+        String expectedPageTitle = "Contacts - Trycloud";
         String actualPageTitle = driver.getTitle();
+        System.out.println(actualPageTitle);
 
         Assert.assertTrue(expectedPageTitle.equals(actualPageTitle));
 

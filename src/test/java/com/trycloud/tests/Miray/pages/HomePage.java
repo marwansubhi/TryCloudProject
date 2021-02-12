@@ -12,7 +12,7 @@ public class HomePage {
     }
 
     public WebElement contactModuleButton(){
-        return driver.findElement(By.xpath("(//*[@data-id='contacts'])[2]"));
+        return driver.findElement(By.xpath("//ul[@id='appmenu']/li[6]"));
 
     }
 }

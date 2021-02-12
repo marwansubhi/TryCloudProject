@@ -25,10 +25,10 @@ public class ContactModulePage {
         return driver.findElement(By.xpath("//input[@id='contact-title']"));
    }
    public WebElement phoneField(){
-        return driver.findElement(By.xpath("//input[@inputmode='tel']"));
+        return driver.findElement(By.xpath("(//input[@class='property__value'])[1]"));
    }
    public WebElement emailField(){
-        return driver.findElement(By.xpath("//input[@inputmode='email']"));
+        return driver.findElement(By.xpath("(//input[@class='property__value'])[2]"));
    }
    public WebElement postOfficeBoxField(){
         return driver.findElement(By.xpath("(//input[@class='property__value'])[3]"));
