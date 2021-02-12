@@ -39,4 +39,11 @@ public class ContactsModule {
        // Driver.closeDriver();
 
     }
+
+    @Test
+    public void agalar(){
+       Driver.getDriver().get("https://www.google.com");
+    }
+
+
 }
