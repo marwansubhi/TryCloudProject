@@ -31,7 +31,7 @@ public class FilePageTest extends TestBase {
         dashboard = new DashboardPage();
         filePage = new FilePage();
 
-        loginPage.logIn(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
+        loginPage.logIn(ConfigurationReader.getProperty("username1"), ConfigurationReader.getProperty("password"));
         BrowserUtils.sleep(5);
         dashboard.clickFiles();
         String expectedPageTitle = "Files - Trycloud QA";
@@ -46,7 +46,7 @@ public class FilePageTest extends TestBase {
         filePage = new FilePage();
 
 
-        loginPage.logIn(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
+        loginPage.logIn(ConfigurationReader.getProperty("username1"), ConfigurationReader.getProperty("password"));
 
 
         dashboard.clickFiles();
@@ -63,7 +63,7 @@ public class FilePageTest extends TestBase {
         filePage = new FilePage();
 
 
-        loginPage.logIn(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
+        loginPage.logIn(ConfigurationReader.getProperty("username1"), ConfigurationReader.getProperty("password"));
         dashboard.clickFiles();
 
         BrowserUtils.sleep(3);
@@ -81,7 +81,7 @@ public class FilePageTest extends TestBase {
         filePage = new FilePage();
         favoritePage = new FavoritePage();
 
-        loginPage.logIn(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
+        loginPage.logIn(ConfigurationReader.getProperty("username1"), ConfigurationReader.getProperty("password"));
         dashboard.clickFiles();
 
         BrowserUtils.sleep(3);
@@ -105,14 +105,14 @@ public class FilePageTest extends TestBase {
         loginPage = new LoginPage();
         filePage = new FilePage();
         dashboard = new DashboardPage();
-        loginPage.logIn(ConfigurationReader.getProperty("username"), ConfigurationReader.getProperty("password"));
+        loginPage.logIn(ConfigurationReader.getProperty("username1"), ConfigurationReader.getProperty("password"));
 
         dashboard.clickFiles();
         BrowserUtils.sleep(2);
-        filePage.createNewFolder("Java Script");
+        filePage.createNewFolder("PHP");
         driver.navigate().refresh();
         BrowserUtils.sleep(3);
-        String expectedFileName = "Java Script";
+        String expectedFileName = "PHP";
 
         Assert.assertTrue(filePage.isNewFileDisplayed(expectedFileName));
 
